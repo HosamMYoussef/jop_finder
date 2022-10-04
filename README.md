@@ -2,8 +2,8 @@
 
  Flutter UI  project for JobFinder App.
 
-## Getting Started![Screenshot_1664922630](https://user-images.githubusercontent.com/57178026/193942308-6b967652-ecf2-4bb8-8d9e-6556eddd4610.png)
-![Screenshot_1664922632](https://user-images.githubusercontent.com/57178026/193942311-668f62ab-f7f5-4fa1-ae53-cb23d821c899.png)
+## Getting Started![Screenshot_1664922630](https://user-images.githubusercontent.com/57178026/193942308-6b967652-ecf2-4bb8-8d9e-6556eddd4610.png) ![Screenshot_1664922632](https://user-images.githubusercontent.com/57178026/193942311-668f62ab-f7f5-4fa1-ae53-cb23d821c899.png)
+
 ![Screenshot_1664922641](https://user-images.githubusercontent.com/57178026/193942314-43f856c6-2f4e-472f-a375-4efdf9a4eb86.png)
 ![Screenshot_1664922649](https://user-images.githubusercontent.com/57178026/193942319-54e86b5c-319f-4abd-bab6-f04d86218547.png)
 ![Screenshot_1664922660](https://user-images.githubusercontent.com/57178026/193942325-edbb1d32-a8fa-49ee-baf3-d212e1e2b7bb.png)
