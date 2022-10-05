@@ -42,7 +42,7 @@ class _ControlViewState extends State<ControlView> {
     final jopData = Provider.of<Jops>(context);
     final jopss = jopData.jops;
     return ChangeNotifierProvider(
-    create:(context)=> jopss[5],s
+    create:(context)=> jopss[5],
       child: Scaffold(
         body: _pages[_selectPageIndex],
         bottomNavigationBar: SizedBox(
