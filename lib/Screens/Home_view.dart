@@ -8,13 +8,15 @@ import 'package:jop_finder/Screens/bookmarks_view.dart';
 import 'package:jop_finder/Screens/profile.dart';
 import 'package:jop_finder/constants.dart';
 import 'package:jop_finder/models/category_model.dart';
+import 'package:provider/provider.dart';
 
+import '../models/Jops.dart';
 import 'Jop_details.dart';
 import 'notfications.dart';
 
 class HomeView extends StatefulWidget {
-  final List<JopModel> jops;
-  HomeView(this.jops);
+  // final List<JopModel> jops;
+  // HomeView(this.jops);
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -35,6 +37,7 @@ class _HomeViewState extends State<HomeView> {
     true,
     true,
     true,
+    true,
    
   ];
 
@@ -42,6 +45,9 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final jopData = Provider.of<Jops>(context);
+    final jopss = jopData.jops;
+      final jopp = Provider.of<JopModel>(context);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -316,127 +322,125 @@ class _HomeViewState extends State<HomeView> {
                   );
                 },
                 itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(JopDetails.routeName,
-                          arguments: widget.jops[index]);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Stack(
-                        children: [
-                          Container(
-                            height: 110,
-                            width: 349,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                                color: Colors.white),
-                            child: Column(children: [
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 20.0),
-                                    child: Image.asset(
-                                      widget.jops[index].image,
-                                      fit: BoxFit.contain,
+                  return ChangeNotifierProvider(
+                    create:(context)=> jopss[index],
+                    
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(JopDetails.routeName,
+                            arguments: jopss[index]);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: Stack(
+                          children: [
+                            Container(
+                              height: 110,
+                              width: 349,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white),
+                              child: Column(children: [
+                                Row(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 20.0),
+                                      child: Image.asset(
+                                        jopss[index].image,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
-                                  ),
-                                  Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 13.0, top: 12),
-                                        child: Text(
-                                          widget.jops[index].companyName,
-                                          style: const TextStyle(
-                                            color: Color.fromRGBO(
-                                                126, 126, 126, 1),
-                                            fontSize: 14,
-                                            fontFamily: 'Cairo',
-                                            fontWeight: FontWeight.w600,
+                                    Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 13.0, top: 12),
+                                          child: Text(
+                                            jopss[index].companyName,
+                                            style: const TextStyle(
+                                              color: Color.fromRGBO(
+                                                  126, 126, 126, 1),
+                                              fontSize: 14,
+                                              fontFamily: 'Cairo',
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 13.0),
-                                        child: Text(
-                                          widget.jops[index].jopTitle,
-                                          style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontFamily: 'Cairo',
-                                            fontWeight: FontWeight.w700,
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 13.0),
+                                          child: Text(
+                                            jopss[index].jopTitle,
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontFamily: 'Cairo',
+                                              fontWeight: FontWeight.w700,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 22.0),
-                                    child: Text(
-                                      widget.jops[index].date,
-                                      style: const TextStyle(
-                                        color: Color.fromRGBO(126, 126, 126, 1),
-                                        fontSize: 14,
-                                        fontFamily: 'Cairo',
-                                        fontWeight: FontWeight.w400,
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 22.0),
+                                      child: Text(
+                                        jopss[index].date,
+                                        style: const TextStyle(
+                                          color: Color.fromRGBO(126, 126, 126, 1),
+                                          fontSize: 14,
+                                          fontFamily: 'Cairo',
+                                          fontWeight: FontWeight.w400,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 22.0),
-                                    child: Text(
-                                      widget.jops[index].salary,
-                                      style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14,
-                                        fontFamily: 'Cairo',
-                                        fontWeight: FontWeight.w600,
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 22.0),
+                                      child: Text(
+                                        jopss[index].salary,
+                                        style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 14,
+                                          fontFamily: 'Cairo',
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              )
-                            ]),
-                          ),
-                          Positioned(
-                              left: 290,
-                              bottom: 60,
-                              child: IconButton(
-                                icon: checks[index]
-                                    ? SvgPicture.asset(
-                                        'assets/images/bookmarkoutline.svg',
-                                      )
-                                    : SvgPicture.asset(
-                                        'assets/images/bookmarkfil.svg',
-                                      ),
-                                onPressed: () {
-                                  setState(() {
-                                    if (checks[index]) {
-                                      checks[index] = false;
-                                    } else {
-                                      checks[index] = true;
-                                    }
-                                    ;
-                                  });
-                                },
-                              ))
-                        ],
+                                  ],
+                                )
+                              ]),
+                            ),
+                            Positioned(
+                                left: 290,
+                                bottom: 60,
+                                child: IconButton(
+                                  icon: jopp.isFavorited
+                                      ? SvgPicture.asset(
+                                          'assets/images/bookmarkoutline.svg',
+                                        )
+                                      : SvgPicture.asset(
+                                          'assets/images/bookmarkfil.svg',
+                                        ),
+                                  onPressed: () {
+                                    jopp.toogleFavoriteStatus();
+
+                                  },
+                                ))
+                          ],
+                        ),
                       ),
                     ),
                   );
                 },
-                itemCount: widget.jops.length,
+                itemCount: jopss.length,
               ),
             ),
           )

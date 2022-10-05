@@ -9,10 +9,12 @@ import 'package:jop_finder/Screens/profile.dart';
 import 'package:jop_finder/Screens/register_view.dart';
 import 'package:jop_finder/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'Screens/notfications.dart';
 import 'firebase_options.dart';
 
 import 'Screens/Splash_view.dart';
+import 'models/Jops.dart';
 
 Future<void> main() async {
 //   await Firebase.initializeApp(
@@ -24,24 +26,27 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'JopFinder',
-        theme: ThemeData(
-          primaryColor: pColor,
-          canvasColor: const Color.fromRGBO(246, 246, 246, 1),
-        ),
-        home: const ControlView(),
-        routes: {
-          './': (context) => const Splash(),
-          LoginView.routeName: (context) => const LoginView(),
-          RegisterView.routeName: (context) => const RegisterView(),
-          // HomeView.routeName: (context) => const HomeView(),
-          ControlView.routeName: (context) => const ControlView(),
-          Categories.routeName: (context) => Categories(),
-          Profile.routeName:(context) => const Profile(),
-           JopDetails.routeName:(context) =>  JopDetails(),
-           Notfications.routeName:(context) =>  const Notfications(),
-        });
+    return  ChangeNotifierProvider(
+    create:(context)=> Jops(),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'JopFinder',
+          theme: ThemeData(
+            primaryColor: pColor,
+            canvasColor: const Color.fromRGBO(246, 246, 246, 1),
+          ),
+          home: const ControlView(),
+          routes: {
+            './': (context) => const Splash(),
+            LoginView.routeName: (context) => const LoginView(),
+            RegisterView.routeName: (context) => const RegisterView(),
+            // HomeView.routeName: (context) => const HomeView(),
+            ControlView.routeName: (context) => const ControlView(),
+            Categories.routeName: (context) => Categories(),
+            Profile.routeName:(context) => const Profile(),
+             JopDetails.routeName:(context) =>  JopDetails(),
+             Notfications.routeName:(context) =>  const Notfications(),
+          }),
+    );
   }
 }

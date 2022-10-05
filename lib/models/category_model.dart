@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class CategoriesModel {
   String name;
   String image;
@@ -8,7 +10,7 @@ class CategoriesModel {
   });
 }
 
-class JopModel {
+class JopModel with ChangeNotifier {
   String companyName;
   String image;
   String jopTitle;
@@ -18,7 +20,7 @@ class JopModel {
   String postion;
   String requirment;
   String describtion;
-  
+  bool isFavorited;
 
   JopModel({
     required this.companyName,
@@ -30,6 +32,12 @@ class JopModel {
     required this.postion,
     required this.describtion,
     required this.requirment,
-
+    this.isFavorited = false,
   });
+  void toogleFavoriteStatus() {
+    isFavorited = !isFavorited;
+    notifyListeners();
+  }
+
+  where(Null Function(dynamic element) param0) {}
 }

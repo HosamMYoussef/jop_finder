@@ -7,12 +7,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jop_finder/constants.dart';
 import 'package:jop_finder/models/category_model.dart';
+import 'package:provider/provider.dart';
 
 class JopDetails extends StatelessWidget {
   static const routeName = './Jop-Details';
 
   @override
   Widget build(BuildContext context) {
+  
     final JopModel jop = ModalRoute.of(context)?.settings.arguments as JopModel;
 
     return Scaffold(
@@ -276,24 +278,21 @@ class JopDetails extends StatelessWidget {
               ]),
         ),
         Positioned(
-          
           bottom: 1,
-         //left: 40,
+          //left: 40,
           child: buildBlur(
             borderRadius: BorderRadius.circular(1),
             child: SizedBox(
-              height:80 ,
+              height: 80,
               width: 400,
-               //decoration: BoxDecoration(color: Colors.red),
+              //decoration: BoxDecoration(color: Colors.red),
               child: Padding(
-                padding: const EdgeInsets.only(left:40.0,bottom: 20),
+                padding: const EdgeInsets.only(left: 40.0, bottom: 20),
                 child: Row(
-                  
                   children: [
                     Container(
-                      
-                      decoration:
-                          BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20)),
                       height: 52,
                       width: 238,
                       child: ElevatedButton(
@@ -328,7 +327,6 @@ class JopDetails extends StatelessWidget {
                         child: SvgPicture.asset('assets/images/book.svg'),
                       ),
                     ),
-                    
                   ],
                 ),
               ),
@@ -339,17 +337,17 @@ class JopDetails extends StatelessWidget {
     );
   }
 }
- Widget buildBlur({
-    required Widget child,
-    required BorderRadius borderRadius,
-    double sigmaX = 1,
-    double sigmaY = 1,
-  }) =>
-      ClipRRect(
-        borderRadius: borderRadius, 
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: sigmaX, sigmaY: sigmaY),
-          child: child,
-        ),
-      );
 
+Widget buildBlur({
+  required Widget child,
+  required BorderRadius borderRadius,
+  double sigmaX = 1,
+  double sigmaY = 1,
+}) =>
+    ClipRRect(
+      borderRadius: borderRadius,
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: sigmaX, sigmaY: sigmaY),
+        child: child,
+      ),
+    );
