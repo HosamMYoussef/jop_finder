@@ -34,10 +34,11 @@ class JopModel with ChangeNotifier {
     required this.requirment,
     this.isFavorited = false,
   });
+
+  
   void toogleFavoriteStatus() {
     isFavorited = !isFavorited;
     notifyListeners();
   }
 
-  where(Null Function(dynamic element) param0) {}
 }
