@@ -25,8 +25,8 @@ class Bookmarks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final jopData = Provider.of<Jops>(context);
-    final jopss = jopData.jops;
+    final jopss = Provider.of<Jops>(context).favoritesItem;
+    // final jopss = jopData.favoritesItem;
 
     return Scaffold(
         body: Column(
