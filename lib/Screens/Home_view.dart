@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../models/Jops.dart';
 import 'JopItem.dart';
-import 'Jop_details.dart';
+import 'Job_details.dart';
 import 'notfications.dart';
 
 class HomeView extends StatefulWidget {

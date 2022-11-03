@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:jop_finder/models/category_model.dart';
 import 'package:provider/provider.dart';
 
-import 'Jop_details.dart';
+import 'Job_details.dart';
 class JopItem extends StatelessWidget {
 
 

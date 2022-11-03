@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jop_finder/Screens/Jop_details.dart';
+import 'package:jop_finder/Screens/Job_details.dart';
 import 'package:provider/provider.dart';
 
 import '../models/Jops.dart';
