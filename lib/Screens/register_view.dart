@@ -53,11 +53,11 @@ class _RegisterViewState extends State<RegisterView> {
       _formKey.currentState!.save();
       print(_authData['password']);
       print(_authData['email']);
-      await Provider.of<Auth>(context, listen: false).signin(
+      await Provider.of<Auth>(context, listen: false).signup(
         _authData['email']!,
         _authData['password']!,
       );
-      Navigator.of(context).pushNamed(LoginView.routeName);
+      //Navigator.of(context).pushNamed(LoginView.routeName);
     } on HttpException catch (error) {
       var errorMessage = 'Authentication failed';
       if (error.toString().contains('EMAIL_EXISTS')) {
@@ -283,34 +283,38 @@ class _RegisterViewState extends State<RegisterView> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 76.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)),
-                          height: 52,
-                          width: 238,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              _submit();
-                            },
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
-                              primary: pColor,
-                              elevation: 0,
+                      _isLoading
+                          ? Center(child: CircularProgressIndicator(color: pColor,))
+                          : Padding(
+                              padding: const EdgeInsets.only(left: 76.0),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20)),
+                                height: 52,
+                                width: 238,
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    _formKey.currentState!.validate();
+                                    _submit();
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    primary: pColor,
+                                    elevation: 0,
+                                  ),
+                                  child: const Text(
+                                    'Sign up',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Cairo',
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
                             ),
-                            child: const Text(
-                              'Sign up',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'Cairo',
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ),
-                      ),
                       const SizedBox(
                         height: 8,
                       ),
